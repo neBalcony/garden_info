@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Список NFC-меток</h1>
+
+    <p>
+        <a href="{% url 'tag_create' %}">Добавить метку</a> |
+        <a href="{% url 'card_create' %}">Добавить карточку</a> |
+        <a href="{% url 'logout' %}">Выйти</a>
+    </p>
+
+    <table border="1" cellpadding="6" cellspacing="0">
+        <tr>
+            <th>UID</th>
+            <th>Карточка</th>
+            <th>URL (для записи в NFC)</th>
+        </tr>
+
+        {% for tag in tags %}
+        <tr>
+            <td>{{ tag.uid }}</td>
+            <td>{{ tag.card.title }}</td>
+            <td>
+                <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'card_detail' slug=tag.card.slug %}">
+                    {{ request.scheme }}://{{ request.get_host }}{% url 'card_detail' slug=tag.card.slug %}
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

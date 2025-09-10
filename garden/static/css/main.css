@@ -1,0 +1,40 @@
+.container {
+    max-width: 56rem;
+    margin-inline: auto;
+    background-color: rgb(249 250 251);
+    padding: 4px 0;
+}
+
+.header {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.header-h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    color: rgb(22 101 52)
+}
+
+.header-p {
+    color: rgb(75 85 99)
+}
+
+.header-line {
+    width: 6rem;
+    height: 0.25rem;
+    background-color: rgb(22 163 74);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    border-radius: 9999px
+}
+
+.main {
+    background-color: rgb(255 255 255);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    padding: 1.5rem
+}

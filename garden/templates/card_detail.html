@@ -1,0 +1,99 @@
+{% load static %}
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Растения рядом</title>
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/card.css' %}">
+
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="header-h1">Растения рядом</h1>
+            <p class="header-p">Информация о растениях возле NFC метки <span id="nfcTagId">№ {{tag.uid}} </span></p>
+            <div class="header-line"></div>
+        </header>
+
+        <!-- Plant Info Section -->
+        <div id="plantInfo" class="main">
+            <div class="card_header ">
+                <h2 class="card_header_h2">Информация о растениях</h2>
+                <button id="editBtn" class="card_header_btn transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="card_header_btn_ico">
+                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="plantInfo" class="card_main">
+                <div id="plantDescription">
+                    {{ card.content }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Form (Hidden by default) -->
+        <div id="editForm" class="hidden main">
+            <h2 class="card_main">Редактировать информацию</h2>
+            <form id="plantForm" method = "post">
+                {% csrf_token %}
+                <div id="plantFields">
+                    <div>
+                        <label class="card_form_label">Описание растений</label>
+                        <textarea id="plantDescriptionInput" rows="10"
+                            class="card_form_textarea" name="card_content">${plantDescription}</textarea>
+                    </div>
+                </div>
+
+                <div class="card_form_bottom">
+                    <button type="button" id="cancelBtn" class="card_form_button card_form_button-cancel transition">
+                        Отмена
+                    </button>
+                    <button id="saveBtn" type="submit" form="plantForm"
+                        class="card_form_button card_form_button-save transition">
+                        Сохранить изменения
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+
+        // DOM elements
+        const plantInfo = document.getElementById('plantInfo');
+        const editForm = document.getElementById('editForm');
+        const editBtn = document.getElementById('editBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const plantFields = document.getElementById('plantFields');
+
+        editBtn.addEventListener("click", function () {
+            plantDescription = document.getElementById("plantDescription").innerText;
+
+            plantInfo.classList.add('hidden');
+            editForm.classList.remove('hidden');
+
+            document.getElementById('plantDescriptionInput').innerText = plantDescription;
+
+        })
+
+
+        cancelBtn.addEventListener("click", function () {
+
+            plantInfo.classList.remove('hidden');
+            editForm.classList.add('hidden');
+
+            document.getElementById("plantDescription").innerText = plantDescription;
+
+        })
+    </script>
+</body>
+
+</html>
