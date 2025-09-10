@@ -1,3 +1,5 @@
+staticfiles/
+
 backup.json
 db.sqlite3
 
