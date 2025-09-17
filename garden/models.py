@@ -17,7 +17,7 @@ class Card(models.Model):
         return self.title
 
 class NFCTag(models.Model):
-    uid = models.IntegerField(primary_key=True, default=0)
+    uid = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200, blank=True)
     card = models.ForeignKey(Card, on_delete=models.CASCADE, related_name='nfc_tags')
 
