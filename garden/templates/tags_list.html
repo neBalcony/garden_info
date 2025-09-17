@@ -28,8 +28,8 @@
             <td>{{ tag.uid }}</td>
             <td>{{ tag.card.title }}</td>
             <td>
-                <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'card_detail' slug=tag.card.slug %}">
-                    {{ request.scheme }}://{{ request.get_host }}{% url 'card_detail' slug=tag.card.slug %}
+                <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'card_detail' id=tag.card.id %}">
+                    {{ request.scheme }}://{{ request.get_host }}{% url 'card_detail' id=tag.card.id %}
                 </a>
             </td>
         </tr>

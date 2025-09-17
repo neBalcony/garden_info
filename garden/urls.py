@@ -5,7 +5,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
 
 
-    path('card/<slug:slug>/', views.card_detail, name='card_detail'),
+    path('card/<int:id>/', views.card_detail, name='card_detail'),
 
     # админские страницы для работы с метками и карточками
     path('admin/tags/', views.tags_list, name='tags_list'),

@@ -51,8 +51,8 @@ def card_create(request):
     return render(request, 'card_create.html', {'form': form})
 
 @login_required
-def card_detail(request, slug):
-    card = get_object_or_404(Card, slug=slug)
+def card_detail(request, id):
+    card = get_object_or_404(Card, id=id)
     tag = card.nfc_tags.first() 
     # если пришёл POST — сохраняем изменения (редактирование)
     if request.method == 'POST':
