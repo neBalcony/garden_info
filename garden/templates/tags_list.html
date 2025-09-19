@@ -11,9 +11,10 @@
     <h1>Список NFC-меток</h1>
 
     <p>
-        <a href="{% url 'tag_create' %}">Добавить метку</a> |
-        <a href="{% url 'card_create' %}">Добавить карточку</a> |
-        <a href="{% url 'logout' %}">Выйти</a>
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Выйти</button>
+</form>
     </p>
 
     <table border="1" cellpadding="6" cellspacing="0">
