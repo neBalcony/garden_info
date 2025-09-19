@@ -16,28 +16,14 @@
     <button type="submit">Выйти</button>
 </form>
     </p>
+        {% for card in cards %}
 
-    <table border="1" cellpadding="6" cellspacing="0">
-        <tr>
-            <th>UID</th>
-            <th>Метка</th>
-            <th>Карточка</th>
-            <th>URL (для записи в NFC)</th>
-        </tr>
-
-        {% for tag in tags %}
-        <tr>
-            <td>{{ tag.uid }}</td>
-            <td>{{ tag.title }}</td>
-            <td>{{ tag.card.title }}</td>
-            <td>
-                <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'card_detail' id=tag.card.id %}">
-                    {{ request.scheme }}://{{ request.get_host }}{% url 'card_detail' id=tag.card.id %}
-                </a>
-            </td>
-        </tr>
+        <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'card_detail' id=card.id %}">
+           Card ID {{card.id}}
+        </a>
+        <br> 
+        {% comment %} TODO: Delete <br> after styles are set {% endcomment %}
         {% endfor %}
-    </table>
 </body>
 
 </html>
